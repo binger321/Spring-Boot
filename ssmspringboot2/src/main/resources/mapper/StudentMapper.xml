@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zby.ssmspringboot2.dao.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.zby.ssmspringboot2.domain.Student">
+        <id column="student_id" property="studentId" jdbcType="INTEGER"/>
+        <result column="student_name" property="studentName" jdbcType="VARCHAR"/>
+        <result column="phone_number" property="phoneNumber" jdbcType="INTEGER"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        student_id,student_name,phone_number,address,age
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM student
+        WHERE student_id=#{studentId,jdbcType=INTEGER}
+    </select>
+
+    <select id="listStudent" resultMap="BaseResultMap" parameterType="com.zby.ssmspringboot2.domain.Student">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM student
+        WHERE 1=1
+        <if test="studentId != null">
+            AND student_id = #{studentId,jdbcType=INTEGER}
+        </if>
+        <if test="studentName != null">
+            AND student_name = #{studentName,jdbcType=VARCHAR}
+        </if>
+        <if test="phoneNumber != null">
+            AND phone_number = #{phoneNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="address != null">
+            AND address = #{address,jdbcType=VARCHAR}
+        </if>
+        <if test="age != null">
+            AND age = #{age,jdbcType=INTEGER}
+        </if>
+
+    </select>
+
+    <insert id="insert" parameterType="com.zby.ssmspringboot2.domain.Student">
+        INSERT INTO student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentId != null">
+                student_id,
+            </if>
+            <if test="studentName != null">
+                student_name,
+            </if>
+            <if test="phoneNumber != null">
+                phone_number,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentId != null">
+                #{studentId,jdbcType=INTEGER},
+            </if>
+            <if test="studentName != null">
+                #{studentName,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                #{phoneNumber,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.zby.ssmspringboot2.domain.Student">
+        UPDATE student
+        <set>
+            <if test="studentName != null">
+                student_name = #{studentName,jdbcType=VARCHAR}
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR}
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER}
+            </if>
+        </set>
+        WHERE student_id = #{studentId,jdbcType=INTEGER}
+    </update>
+    <delete id="delete" parameterType="com.zby.ssmspringboot2.domain.Student">
+        DELETE FROM student
+        WHERE student_id = #{studentId,jdbcType=INTEGER}
+    </delete>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/email" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/helloworld" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mangodb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitMQ" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/schedule" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-mybatis-mulidatasource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssmspringboot2" charset="UTF-8" />
+  </component>
+</project>
