@@ -17,12 +17,12 @@ public class HelloSender {
     public void send() {
         String context = "hello " + new Date();
         System.out.println("Sender : " + context);
-        Action action = new Action();
-        action.setDirection("左");
-        action.setSpeed(100);
-        action.setMoveTime(10);
-        System.out.println(action.toString());
-        this.rabbitTemplate.convertAndSend("hello", action);
+//        Action action = new Action();
+//        action.setDirection("左");
+//        action.setSpeed(100);
+//        action.setMoveTime(10);
+//        System.out.println(action.toString());
+        this.rabbitTemplate.convertAndSend("hello", context);
     }
 
 }

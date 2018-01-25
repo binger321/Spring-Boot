@@ -3,6 +3,7 @@ package com.example.rabbitmq.domain;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,4 +34,9 @@ public class Action {
      * 持续时间  s
      */
     private Integer moveTime;
+
+    /**
+     * 指令时间
+     */
+    private Date time;
 }
